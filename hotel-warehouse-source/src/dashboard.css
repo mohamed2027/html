@@ -1,0 +1,66 @@
+/* ---------- Application shell (sidebar + main) ---------- */
+#shell { display: flex; min-height: 100vh; width: 100%; }
+@media (max-width: 900px) { #shell { flex-direction: column; } }
+
+/* ---------- Executive dashboard ---------- */
+.hero {
+  position: relative; overflow: hidden; border-radius: 16px; padding: 22px 24px; margin-bottom: 18px;
+  color: #fff; background: linear-gradient(120deg, #0f1b33 0%, #1d4ed8 55%, #0ea5a4 110%);
+  box-shadow: var(--shadow);
+}
+.hero::after {
+  content: ""; position: absolute; inset-inline-end: -60px; top: -60px; width: 260px; height: 260px;
+  border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.22), transparent 70%);
+}
+.hero h1 { color: #fff; margin: 0 0 4px; }
+.hero .sub { opacity: .85; font-size: 13px; }
+.hero-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; position: relative; z-index: 1; }
+.hero .quick { display: flex; gap: 8px; flex-wrap: wrap; }
+.hero .btn { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.25); color: #fff; }
+.hero .btn.primary { background: #fff; color: #0f1b33; border-color: #fff; }
+
+.kpi-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 18px; }
+.kpi-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 16px 18px; display: flex; gap: 14px; align-items: center; min-width: 0;
+}
+.kpi-icon {
+  width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; font-size: 22px; flex-shrink: 0;
+  background: color-mix(in srgb, var(--c, #1f6feb) 16%, transparent); color: var(--c, #1f6feb);
+}
+.kpi-card .k-label { color: var(--muted); font-size: 12px; }
+.kpi-card .k-value { font-size: 24px; font-weight: 800; line-height: 1.2; margin-top: 2px; }
+.kpi-card .k-hint { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+.dash-grid { display: grid; gap: 18px; grid-template-columns: 1.6fr 1fr; margin-bottom: 18px; }
+.dash-grid.equal { grid-template-columns: 1fr 1fr; }
+@media (max-width: 1100px) { .dash-grid, .dash-grid.equal { grid-template-columns: 1fr; } }
+
+.panel-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+.panel-head h3 { margin: 0; }
+.chart-svg { width: 100%; height: auto; display: block; }
+.chart-svg text { fill: var(--muted); font-size: 11px; }
+.chart-svg .grid-line { stroke: var(--border); stroke-width: 1; }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-inline-end: 6px; vertical-align: middle; }
+
+.donut-wrap { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; justify-content: center; }
+.donut-legend { display: grid; gap: 8px; min-width: 160px; flex: 1; }
+.donut-legend .row { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; }
+
+.feed { display: grid; gap: 10px; }
+.feed-item { display: flex; gap: 12px; align-items: flex-start; padding: 10px; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--border); }
+.feed-dot { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; flex-shrink: 0; font-size: 16px; background: color-mix(in srgb, var(--c, #1f6feb) 16%, transparent); color: var(--c, #1f6feb); }
+.feed-item .t { font-weight: 700; font-size: 13px; }
+.feed-item .d { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+.progress-row { display: grid; gap: 4px; margin-bottom: 12px; }
+.progress-row .top { display: flex; justify-content: space-between; font-size: 13px; }
+.bar.thick { height: 10px; }
+.bar > span.warn { background: var(--warning); }
+.bar > span.bad { background: var(--danger); }
+.bar > span.ok { background: var(--success); }
+
+.stock-status { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; }
+.stock-status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.company-sel { width: 100%; margin-top: 10px; }
